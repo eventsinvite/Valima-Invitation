@@ -1,0 +1,104 @@
+*{box-sizing:border-box}
+:root{
+  --navy:#06132c;--navy2:#0b2044;--pink:#f4bfd2;--pink2:#ffe4ed;
+  --silver:#dce3f2;--white:#fffaff;--goldpink:#f7d5e3;
+}
+html{min-height:100%;scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;overflow-x:hidden;
+  color:var(--white);font-family:"Montserrat",Arial,sans-serif;
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(244,191,210,.22),transparent 30%),
+    radial-gradient(ellipse at 88% 82%,rgba(220,227,242,.18),transparent 34%),
+    radial-gradient(ellipse at 55% 0%,rgba(77,112,173,.22),transparent 35%),
+    linear-gradient(135deg,#020817,#071733 48%,#101d3b);
+}
+body:before{content:"";position:fixed;inset:9px;border:1px solid transparent;border-radius:22px;
+  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(244,191,210,.25),rgba(220,227,242,.65)) border-box;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;z-index:3}
+.sparkle-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.sparkle{position:absolute;border-radius:50%;background:linear-gradient(135deg,#fff,#f4bfd2,#dce3f2);
+  box-shadow:0 0 5px 2px rgba(255,255,255,.8),0 0 14px rgba(244,191,210,.75),0 0 20px rgba(220,227,242,.4);
+  animation:twinkle var(--duration,3s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.16;transform:scale(.55) rotate(0)}50%{opacity:1;transform:scale(1.7) rotate(90deg)}}
+@keyframes enter{from{opacity:0;transform:translateY(15px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes pulse{0%,100%{box-shadow:0 0 16px rgba(244,191,210,.22),0 0 28px rgba(220,227,242,.12)}50%{box-shadow:0 0 28px rgba(244,191,210,.52),0 0 42px rgba(220,227,242,.25)}}
+.invitation{
+  position:relative;z-index:1;width:min(100%,600px);min-height:min(820px,calc(100dvh - 36px));
+  padding:clamp(26px,5vw,54px) clamp(20px,6.5vw,62px);display:flex;align-items:stretch;justify-content:center;
+  border:1px solid rgba(226,231,244,.7);border-radius:24px;overflow:hidden;
+  background:
+    radial-gradient(circle at 0 0,rgba(244,191,210,.13),transparent 34%),
+    radial-gradient(circle at 100% 100%,rgba(220,227,242,.13),transparent 34%),
+    linear-gradient(150deg,rgba(12,32,66,.97),rgba(3,12,30,.98));
+  box-shadow:0 28px 90px rgba(0,0,0,.52),inset 0 0 42px rgba(244,191,210,.06);
+}
+.invitation:before,.invitation:after{position:absolute;content:"✧";font-size:27px;
+  background:linear-gradient(120deg,#fff,#f4bfd2,#dce3f2,#fff);background-size:200% auto;
+  color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 5s linear infinite;pointer-events:none}
+.invitation:before{top:17px;left:20px}.invitation:after{bottom:17px;right:20px}
+.page{display:none;width:100%;align-self:center;text-align:center;flex-direction:column;align-items:center;justify-content:center;animation:enter .65s ease both}
+.page.active{display:flex}.page-open{min-height:100%}
+.open-button,.next-button,.map-button{font:600 11px/1.4 "Montserrat",Arial,sans-serif;letter-spacing:.16em;text-decoration:none;cursor:pointer;transition:transform .25s,filter .25s,box-shadow .25s}
+.open-button{
+  padding:17px 29px;max-width:100%;border:1px solid rgba(255,255,255,.9);border-radius:999px;
+  color:#09172e;background:linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff);background-size:220% auto;
+  box-shadow:0 0 24px rgba(244,191,210,.35),0 0 32px rgba(220,227,242,.18);animation:shimmer 5s linear infinite,pulse 2.5s ease-in-out infinite
+}
+.open-button:hover,.next-button:hover,.map-button:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.ornament{font-family:"Cormorant Garamond",serif;font-size:26px;letter-spacing:.28em;margin-bottom:22px;
+  background:linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 6s linear infinite}
+.bottom-ornament{margin-top:22px;margin-bottom:8px}
+.arabic{font-family:"Cormorant Garamond",serif;font-size:clamp(27px,5.5vw,38px);line-height:1.8;margin:5px 0 18px;
+  background:linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 7s linear infinite}
+.dua{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,4vw,24px);line-height:1.9;color:var(--pink2);margin:23px 0 10px}
+.silver-line{width:min(200px,62%);height:1px;margin:15px auto 22px;background:linear-gradient(90deg,transparent,#fff,#f4bfd2,#dce3f2,#fff,transparent);box-shadow:0 0 10px rgba(220,227,242,.6)}
+.eyebrow,.small-caps{font-family:"Montserrat",Arial,sans-serif;font-size:clamp(9px,1.8vw,11px);font-weight:600;letter-spacing:.14em;line-height:1.8;margin:7px 0;color:#e5e8f3}
+.script-heading,.name-script{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-style:italic;letter-spacing:-.035em;
+  background:linear-gradient(110deg,#fff 0%,#f4bfd2 26%,#fff5fa 48%,#cbd5e8 70%,#fff 100%);background-size:220% auto;
+  color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 8s linear infinite}
+.script-heading{font-size:clamp(38px,8vw,58px);line-height:1.1;margin:12px 0 18px}
+.intro-copy,.closing-copy{max-width:430px;color:#e9eaf2;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(19px,4vw,23px);line-height:1.55;margin:8px auto}
+.name-script{font-size:clamp(44px,9vw,66px);line-height:1.03;margin:7px 0 12px}
+.groom{margin-top:2px}.with{margin-top:9px}
+.date-day,.date-month{display:inline-block;color:#e8eaf3;font-family:"Montserrat",Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.13em;margin:3px 4px}
+.date-number{margin:4px 0;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(47px,9vw,63px);line-height:1.05;font-weight:600;
+  background:linear-gradient(110deg,#fff,#f4bfd2,#fff,#cbd5e8,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 6s linear infinite}
+.date-number sup{font:600 12px "Montserrat",sans-serif;vertical-align:super;letter-spacing:.05em}
+.venue-name{font:600 clamp(15px,3vw,18px)/1.5 "Montserrat",sans-serif;letter-spacing:.15em;margin:18px 0 5px;
+  background:linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shimmer 7s linear infinite}
+.venue-address{color:#d9deeb;font-family:"Montserrat",sans-serif;font-size:12px;line-height:1.7;margin:3px 0}
+.next-button{margin-top:25px;padding:12px 19px;color:#fff7fc;border:1px solid transparent;border-radius:999px;
+  background:linear-gradient(#0b2044,#0b2044) padding-box,linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff) border-box;box-shadow:0 0 16px rgba(244,191,210,.1)}
+.next-button span{color:var(--pink);margin-left:8px}
+.detail-card{display:flex;align-items:center;gap:15px;text-align:left;width:min(100%,390px);padding:12px 15px;margin:5px 0;border:1px solid rgba(220,227,242,.28);border-radius:13px;
+  background:linear-gradient(115deg,rgba(255,255,255,.055),rgba(244,191,210,.045));box-shadow:inset 0 0 14px rgba(255,255,255,.018)}
+.detail-icon{flex:0 0 36px;display:grid;place-items:center;width:36px;height:36px;font-size:20px;border-radius:50%;color:#fff;
+  background:linear-gradient(135deg,#f4bfd2,#dce3f2,#fff);background-size:200% auto;color:#142344;box-shadow:0 0 13px rgba(244,191,210,.22)}
+.detail-label{margin:0 0 3px;color:#dce3f2;font:600 9px "Montserrat",sans-serif;letter-spacing:.16em}
+.detail-value{margin:0;color:#fffaff;font:500 15px "Montserrat",sans-serif;line-height:1.5}
+.venue-card .venue-address{font-size:11px}
+.map-button{display:inline-block;margin-top:13px;padding:12px 16px;border:1px solid transparent;border-radius:999px;
+  background:linear-gradient(#0b2044,#0b2044) padding-box,linear-gradient(110deg,#fff,#f4bfd2,#dce3f2,#fff) border-box;color:#fff4f9;font-size:9px}
+.rsvp-title{font:600 16px "Montserrat",sans-serif;letter-spacing:.16em;color:#fff;margin:5px 0 5px}
+.rsvp-subtitle{margin:0 0 8px;color:#dce3f2;font-family:"Cormorant Garamond",serif;font-size:20px}
+.phone-link{color:#fbe5ed;text-decoration:none;font:500 16px "Montserrat",sans-serif;line-height:1.8}
+.footer-thanks{margin-top:15px}
+.restart-button{margin-top:20px}
+@media(max-width:480px){
+  body{padding:11px}body:before{inset:5px;border-radius:15px}
+  .invitation{min-height:calc(100dvh - 22px);padding:38px 19px 29px;border-radius:18px}
+  .invitation:before{top:10px;left:11px;font-size:22px}.invitation:after{bottom:10px;right:11px;font-size:22px}
+  .ornament{margin-bottom:15px;font-size:22px}.script-heading{margin:9px 0 13px}
+  .name-script{font-size:clamp(40px,11vw,55px)}.small-caps{font-size:9px;letter-spacing:.1em}
+  .detail-card{padding:10px 11px;gap:11px}.detail-value{font-size:14px}.venue-address{font-size:11px}
+  .next-button{margin-top:19px}
+}
+@media(max-width:350px){
+  body{padding:8px}.invitation{padding:32px 14px 24px;min-height:calc(100dvh - 16px)}
+  .open-button{padding:15px 19px;font-size:10px}.eyebrow{letter-spacing:.07em}
+  .date-day,.date-month{font-size:9px;letter-spacing:.07em}.name-script{font-size:38px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
